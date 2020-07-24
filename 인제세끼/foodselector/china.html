@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+      <title>China</title>
+      <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=zw55ujufeu"></script>
+      <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+
+      <style>
+        ul.china {
+          list-style:none;
+          margin:0;
+          padding:0;
+        }
+        li.chinaname {
+          padding: 5px 5px 100px 5px;
+          margin-bottom: 5px;
+          border-bottom: 1px solid black;
+          font-size: 20px;
+          transition: background-color 0.3s linear;
+          font-family: 'Nanum Brush Script', cursive;
+        }
+        li.chinaname:last-child {
+          border-bottom: 0px;
+        }
+        li.chinaname:hover {
+          background-color : #f6f6f6;
+        }
+        li.chinaname a {
+          text-decoration: none;
+          color: black;
+        }
+        li.chinaname div.cn {
+          font-size: 35px;
+          display: inline;
+        }
+        li.chinaname img {
+          width: 130px;
+          height: 130px;
+          float: right;
+        }
+      </style>
+  </head>
+  <body>
+  <div id="map" style="width:100%;height:400px;"></div>
+
+  <script>
+    var map = new naver.maps.Map('map', {
+        center: new naver.maps.LatLng(35.4811605, 129.4135263),
+        zoom: 15
+    });
+
+    makeMarker(map, new naver.maps.LatLng(35.4811605,129.4135263), 0);
+    makeMarker(map, new naver.maps.LatLng(35.483886, 129.4109962), 1);
+    makeMarker(map, new naver.maps.LatLng(35.490817, 129.4195563), 2);
+
+    function makeMarker(map, position, index) {
+
+        var ICON_GAP = 31;
+        var ICON_SPRITE_IMAGE_URL ='/img/example/sp_pin_hd.png';
+        var iconSpritePositionX = (index * ICON_GAP) + 1;
+        var iconSpritePositionY = 1;
+
+        var marker = new naver.maps.Marker({
+            map: map,
+            position: position,
+            icon: {
+              url: ICON_SPRITE_IMAGE_URL,
+              size: new naver.maps.Size(26, 36), // 이미지 크기
+              origin: new naver.maps.Point(iconSpritePositionX, iconSpritePositionY), // 스프라이트 이미지에서 클리핑 위치
+              anchor: new naver.maps.Point(13, 36), // 지도상 위치에서 이미지 위치의 offset값
+              scaledSize: new naver.maps.Size(395, 79)
+            }
+        });
+        return marker;
+    }
+  </script>
+
+  <ul class="china">
+    <li class="chinaname"><a href="#"><div class="cn">지린성</div>
+    <img src="../foodimage/china.png" alt="이미지가 깨졌습니다"><br>울산광역시 동구 방어동 1156-17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;맛있는 짜장면과 탕수육 짬뽕을 즐기세요</a></li>
+    <li class="chinaname"><a href="#"><div class="cn">지린성</div>
+    <img src="../foodimage/china.png" alt="이미지가 깨졌습니다"><br>맛있는 짜장면과 탕수육 짬뽕을 즐기세요</a></li>
+    <li class="chinaname"><a href="#"><div class="cn">지린성</div>
+    <img src="../foodimage/china.png" alt="이미지가 깨졌습니다"><br>맛있는 짜장면과 탕수육 짬뽕을 즐기세요</a></li>
+  </ul>
+  </body>
+</html>
